@@ -7,7 +7,14 @@ metadata:
 spec:
   containers:
     - name: client
-      image: erwee402/multi-client
+      image: erwee402/multi-worker
       ports: 
         - containerPort: 3000
-        
+      # https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "250m"
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
